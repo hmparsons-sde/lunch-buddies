@@ -4,40 +4,44 @@ using System.Text;
 
 namespace lunch_buddies.LunchBuddy
 {
-    class LunchBuddy
+    public class LunchBuddy
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
         public LunchBuddy(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
         }
-        public string Eat()
-        {
-            var restaurant = new RestaurantChoice();
-            var randomRestaurant = restaurant.Name;
-            Console.WriteLine($"{FirstName} {LastName} is at {randomRestaurant}");
-            return randomRestaurant;
-        }
-        public void Eat(string food) => Console.WriteLine($"{FirstName} {LastName} ate {food} at the office");
 
+        public void Eat()
+        {
+            var restaurant = new Restaurant();
+            Console.WriteLine($"My friend {FirstName} {LastName} is meeting me at {restaurant.RestaurantName}");
+        }
+        public void Eat(string food)
+        {
+            Console.WriteLine($"{FirstName} is having a {food}.");
+        }
         public void Eat(List<LunchBuddy> companions)
         {
-            var restaurant = new RestaurantChoice();
-            var randomRestaurant = restaurant.Name;
-            Console.WriteLine($"{FirstName} {LastName} is at {randomRestaurant}");
-            foreach (var companion in companions)
+            var restaurant = new Restaurant();
+            Console.WriteLine($"{FirstName} is meeting me at {restaurant.RestaurantName} with ");
+            foreach (var item in companions)
             {
-                Console.WriteLine($"{companion.FirstName}");
+                Console.WriteLine($"{item.FirstName} {item.LastName}");
             }
         }
-
         public void Eat(string food, List<LunchBuddy> companions)
         {
-            var restaurant = new RestaurantChoice();
-            var randomRestaurant = restaurant.Name;
-            Console.WriteLine($"{FirstName} {LastName} is at {randomRestaurant} eating {food} with {companions[0].FirstName} and {companions[1].FirstName}");
+            var restaurant = new Restaurant();
+            Console.WriteLine($"{FirstName} ate {food} at {restaurant.RestaurantName} with ");
+            foreach (var item in companions)
+            {
+                Console.WriteLine($"{item.FirstName} {item.LastName}");
+            }
         }
     }
 }
+

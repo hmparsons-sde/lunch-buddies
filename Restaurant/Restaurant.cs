@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lunch_buddies.RestaurantChoice
+namespace lunch_buddies
 {
     class Restaurant
     {
-        private List<string> _restaurantNames = new() { "CiCi's Pizza", "El Mexico", "Chili's", "Chick-fil-a", "Camino Real", "O' Charley's", "Nacho's" };
-        public string Name { get; set; }
+        public string RestaurantName;
+        readonly List<string> _restaurants = new List<string> { "Awash", "Fleet Street Pub", "Clawson's", "Soy Cubano" };
 
-        public static void RestaurantChoice()
+        public Restaurant()
         {
-            var random = new Random();
-            int num = random.Next(_restaurantNames.Count);
-            Name = _restaurantNames[num];
+            Random randomRestaurant = new();
+            int index = randomRestaurant.Next(_restaurants.Count);
+            RestaurantName = _restaurants[index];
         }
+
+
     }
 }
